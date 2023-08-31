@@ -17,4 +17,8 @@ export class HeroesService {
   getHeroeporId(id : string){
     return this.http.get<Heroe>(`${environment.url}/${id}`)
   }
+
+  getSugerencias(termino : string){
+    return this.http.get<Heroe[]>(`${environment.url}?q=${termino}&_limit=6`)
+  }
 }
