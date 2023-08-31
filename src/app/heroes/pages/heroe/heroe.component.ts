@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Heroe } from 'interfaces/heroes.interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroe',
@@ -9,12 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HeroeComponent implements OnInit{
 
-  @Input() heroe!: Heroe;
+  heroe!: Heroe;
 
-  constructor(private activatedRoute: ActivatedRoute){}
+  constructor(private activatedRoute: ActivatedRoute, private heroeService : HeroesService, private router: Router){}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({id}) => console.log(id))
+    this.activatedRoute.params.subscribe(({id}) => 
+    this.heroeService.getHeroeporId(id)
+      .subscribe({next: res => {this.heroe = res} }))
   }
 
+  regresar(){
+    this.router.navigate(['/heroes/listado'])
+  }
 }
