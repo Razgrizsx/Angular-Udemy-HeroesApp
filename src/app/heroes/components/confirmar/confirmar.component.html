@@ -1,0 +1,14 @@
+<div class="div" fxLayout="column" fxFlexAlign="center">
+    <h1>¿Está Seguro?</h1>
+    <hr>
+    <p>
+        Esta a punto de borrar a ABC
+        <br style="width: 300px; height: 300px;">
+        ¿Desea continuar?
+    </p>
+
+    <div class="div2" fxLayout="row" fxFlexAlign="center">
+        <button mat-button (click)="borrar()" color="warn">Si, borrar!</button>
+        <button mat-button (click)="cerrar()" color="warn">Cancelar</button>
+    </div>
+</div>
