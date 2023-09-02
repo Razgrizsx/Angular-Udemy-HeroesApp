@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { Heroe } from 'interfaces/heroes.interfaces';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-listado',
@@ -15,7 +14,6 @@ constructor(private heroesService : HeroesService){}
 
   ngOnInit():void {
 
-    console.log(environment)
     this.heroesService.getHeroes()
       .subscribe(
         {
